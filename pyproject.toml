@@ -1,0 +1,11 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+
+[project]
+name = "work_time_logger"
+version = "0.1.0"
+description = "Automatically log work time to my workplace's application"
+authors = [
+    {name = "Manuel Martinez", email = "manumartinezrzn@gmail.com"},
+]
+license = "MIT"
