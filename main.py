@@ -29,19 +29,21 @@ def main():
     # Mark the working hours
     exit_code = mark_working_hours(date)
 
-    # Print the result
+    # log result
     if exit_code == ExitCode.SUCCESS:
         logger.info("Hours marked successfully.")
     elif exit_code == ExitCode.LOGIN_TIMEOUT:
-        logger.info("Login timeout.")
+        logger.error("Login timeout.")
     elif exit_code == ExitCode.IN_DATE_ERROR:
-        logger.info("Error setting the in date.")
+        logger.error("Error setting the in date.")
     elif exit_code == ExitCode.OUT_DATE_ERROR:
-        logger.info("Error setting the out date.")
+        logger.error("Error setting the out date.")
     elif exit_code == ExitCode.LOGOUT_TIMEOUT:
-        logger.info("Logout timeout.")
+        logger.error("Logout timeout.")
     else:
-        logger.info("Unknown error.")
+        logger.error("Unknown error.")
+
+    return
 
 
 if __name__ == "__main__":

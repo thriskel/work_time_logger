@@ -66,7 +66,12 @@ class HolydayChecker(WorkdayChecker):
 
         holydays = json.load(self.holydays_file)
 
-        return [datetime.strptime(holyday, '%Y-%m-%d') for holyday in holydays]
+        holydays = holydays.get('holydays', [])
+
+        return [
+            datetime.strptime(holyday_date, '%Y-%m-%d')
+            for holyday_date in holydays
+        ]
 
 
 class VacationChecker(WorkdayChecker):
@@ -106,6 +111,8 @@ class VacationChecker(WorkdayChecker):
             return []
 
         vacations = json.load(self.vacations_file)
+
+        vacations = vacations.get('vacations', [])
 
         vacation_days = []
 
@@ -152,10 +159,7 @@ class WeekendChecker(WorkdayChecker):
         return date.weekday() < 5
 
 
-def is_date_workday(
-        date: datetime,
-        holydays_file: str = None,
-        vacations_file: str = None) -> bool:
+def is_date_workday(date: datetime) -> bool:
     """Check if a day is a workday or not.
 
     Args:
@@ -168,8 +172,12 @@ def is_date_workday(
     Returns:
         bool: True if the date is a workday, False otherwise.
     """
-    holyday_checker = HolydayChecker(holydays_file)
-    vacation_checker = VacationChecker(vacations_file)
+
+    holydays_file_path = os.path.join(
+        os.path.dirname(__file__), 'resources', 'holydays.json')
+
+    holyday_checker = HolydayChecker(holydays_file_path)
+    vacation_checker = VacationChecker(holydays_file_path)
     weekend_checker = WeekendChecker()
 
     return holyday_checker.is_workday(date) and \
