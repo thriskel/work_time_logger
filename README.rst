@@ -74,6 +74,8 @@ To use this project, you can run the main script using the following command:
 
     python main.py
 
+If you wish to run the script on a daily basis as for now you will need to set up a cron job, or a scheduled task.
+
 Contributing
 ============
 
