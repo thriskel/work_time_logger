@@ -20,18 +20,24 @@ class LogManager:
         """Initialize the LogManager class"""
         today_date = datetime.now().strftime('%Y-%m-%d')
 
-        logs_base_path = os.path.realpath(__file__)
-        logs_base_path = '\\'.join(logs_base_path.split('\\')[:-2])
-        logs_base_path = f'{logs_base_path}\\logs'
+        logs_script_path = os.path.realpath(__file__)
+        logs_script_directory = os.path.dirname(logs_script_path)
+        logs_base_path = os.path.join(logs_script_directory, '..', 'logs')
+        logs_base_path = os.path.normpath(logs_base_path)
 
-        self.log_level = log_level
-        self.log_file = f'{logs_base_path}\\{today_date}.log'
+        log_file_name = f'{today_date}.log'
+
+        self.log_file = os.path.join(logs_base_path, log_file_name)
 
         self.logger = getLogger()
-        self.logger.setLevel(log_level)
+
+        self.set_log_level(log_level)
+        self.log_level = log_level
 
         self.formatter = Formatter(
             '%(asctime)s - %(levelname)s - %(message)s')
+
+        self.set_log_file()
 
     def set_log_file(self):
         """Set the log file for the application"""
