@@ -38,13 +38,13 @@ To install this project, you can clone the repository using the following comman
 
 .. code-block:: bash
 
-    git clone https://github.com/yourusername/working-hours-logger.git
+    git clone https://https://github.com/thriskel/work_time_logger.git
 
 Then, navigate into the project directory and install the required dependencies:
 
 .. code-block:: bash
 
-    cd working-hours-logger
+    cd work_time_logger
     pip install -r requirements.txt
 
 Configuration
