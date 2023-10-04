@@ -68,7 +68,10 @@ class HolydayChecker(WorkdayChecker):
 
         holydays = holydays.get('holydays', [])
 
-        return [datetime.strptime(holyday_date, '%Y-%m-%d') for holyday_date in holydays]
+        return [
+            datetime.strptime(holyday_date, '%Y-%m-%d')
+            for holyday_date in holydays
+        ]
 
 
 class VacationChecker(WorkdayChecker):
