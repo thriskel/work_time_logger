@@ -54,16 +54,18 @@ To configure this project, you will need to create a ``config.py`` file in the w
 
 In this file, you will need to add the following variables:
 
-LOGGING_WEBSITE = "website_login_url"
-USERNAME = "username"
-PASSWORD = "password"
-START_HOUR = 8 # integer value (24 hour format), this is the hour that you start working
-START_MINUTE = 0 # integer value (24 hour format), this is the minute that you start working
-END_HOUR = 16 # integer value (24 hour format), this is the hour that you end working
-END_MINUTE = 30 # integer value (24 hour format), this is the minute that you end working
-FRIDAY_END_HOUR = 15 # integer value (24 hour format), this is the hour that you end working on fridays
-FRIDAY_END_MINUTE = 0 # integer value (24 hour format), this is the minute that you end working on fridays
-PLACE_VALUE = "selector_option_name" # this is the value of the place where you work
+.. code-block:: python
+
+    LOGGING_WEBSITE = "website_login_url"
+    USERNAME = "username"
+    PASSWORD = "password"
+    START_HOUR = 8 # integer value (24 hour format), this is the hour that you start working
+    START_MINUTE = 0 # integer value (24 hour format), this is the minute that you start working
+    END_HOUR = 16 # integer value (24 hour format), this is the hour that you end working
+    END_MINUTE = 30 # integer value (24 hour format), this is the minute that you end working
+    FRIDAY_END_HOUR = 15 # integer value (24 hour format), this is the hour that you end working on fridays
+    FRIDAY_END_MINUTE = 0 # integer value (24 hour format), this is the minute that you end working on fridays
+    PLACE_VALUE = "selector_option_name" # this is the value of the place where you work
 
 Usage
 =====
