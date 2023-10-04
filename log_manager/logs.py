@@ -24,14 +24,17 @@ class LogManager:
         logs_base_path = '\\'.join(logs_base_path.split('\\')[:-2])
         logs_base_path = f'{logs_base_path}\\logs'
 
-        self.log_level = log_level
         self.log_file = f'{logs_base_path}\\{today_date}.log'
 
         self.logger = getLogger()
-        self.logger.setLevel(log_level)
+
+        self.set_log_level(log_level)
+        self.log_level = log_level
 
         self.formatter = Formatter(
             '%(asctime)s - %(levelname)s - %(message)s')
+
+        self.set_log_file()
 
     def set_log_file(self):
         """Set the log file for the application"""
