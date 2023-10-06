@@ -2,4 +2,5 @@
 *.pyo
 *.pyd
 *.bat
+*.log
 config.py
