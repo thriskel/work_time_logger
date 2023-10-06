@@ -64,7 +64,8 @@ class HolydayChecker(WorkdayChecker):
         if not os.path.exists(self.holydays_file):
             return []
 
-        holydays = json.load(self.holydays_file)
+        with open(self.holydays_file, 'r', encoding='utf-8') as holydays_file:
+            holydays = json.load(holydays_file)
 
         holydays = holydays.get('holydays', [])
 
@@ -110,7 +111,8 @@ class VacationChecker(WorkdayChecker):
         if not os.path.exists(self.vacations_file):
             return []
 
-        vacations = json.load(self.vacations_file)
+        with open(self.vacations_file, 'r', encoding='utf-8') as vacations_file:
+            vacations = json.load(vacations_file)
 
         vacations = vacations.get('vacations', [])
 
