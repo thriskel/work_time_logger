@@ -9,8 +9,7 @@
 import os
 
 from datetime import datetime
-from logging import (CRITICAL, DEBUG, ERROR, FileHandler,
-                     Formatter, getLogger, INFO, WARNING)
+from logging import FileHandler, Formatter, getLogger, INFO
 
 
 class LogManager:
@@ -18,7 +17,7 @@ class LogManager:
 
     def __init__(self, log_level=INFO):
         """Initialize the LogManager class"""
-        today_date = datetime.now().strftime('%Y-%m-%d')
+        today_date = datetime.now().strftime('%Y-%m')
 
         logs_script_path = os.path.realpath(__file__)
         logs_script_directory = os.path.dirname(logs_script_path)
@@ -48,18 +47,7 @@ class LogManager:
 
     def set_log_level(self, log_level):
         """Set the log level for the application"""
-        if log_level == 'DEBUG':
-            self.logger.setLevel(DEBUG)
-        elif log_level == 'INFO':
-            self.logger.setLevel(INFO)
-        elif log_level == 'WARNING':
-            self.logger.setLevel(WARNING)
-        elif log_level == 'ERROR':
-            self.logger.setLevel(ERROR)
-        elif log_level == 'CRITICAL':
-            self.logger.setLevel(CRITICAL)
-        else:
-            self.logger.setLevel(DEBUG)
+        self.logger.setLevel(log_level)
 
     def get_logger(self):
         """Return the logger"""
