@@ -32,16 +32,8 @@ def main():
     # log result
     if exit_code == ExitCode.SUCCESS:
         logger.info("Hours marked successfully.")
-    elif exit_code == ExitCode.LOGIN_TIMEOUT:
-        logger.error("Login timeout.")
-    elif exit_code == ExitCode.IN_DATE_ERROR:
-        logger.error("Error setting the in date.")
-    elif exit_code == ExitCode.OUT_DATE_ERROR:
-        logger.error("Error setting the out date.")
-    elif exit_code == ExitCode.LOGOUT_TIMEOUT:
-        logger.error("Logout timeout.")
     else:
-        logger.error("Unknown error.")
+        logger.error("Hours could not be marked.")
 
     return
 
