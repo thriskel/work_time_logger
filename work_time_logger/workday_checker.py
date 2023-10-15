@@ -178,12 +178,26 @@ def is_date_workday(date: datetime) -> bool:
     """
 
     holydays_file_path = os.path.join(
-        os.path.dirname(__file__), 'resources', 'holydays.json')
+        os.path.dirname(__file__),
+        'resources',
+        'holydays.json'
+    )
 
     holyday_checker = HolydayChecker(holydays_file_path)
     vacation_checker = VacationChecker(holydays_file_path)
     weekend_checker = WeekendChecker()
 
-    return holyday_checker.is_workday(date) and \
-        vacation_checker.is_workday(date) and \
-        weekend_checker.is_workday(date)
+    is_date_a_holiday = holyday_checker.is_workday(date)
+    is_date_a_vacation = vacation_checker.is_workday(date)
+    is_date_a_weekend = weekend_checker.is_workday(date)
+
+    is_workday = not (
+        is_date_a_holiday or
+        is_date_a_vacation or
+        is_date_a_weekend
+    )
+
+    if is_workday:
+        return True
+
+    return False
