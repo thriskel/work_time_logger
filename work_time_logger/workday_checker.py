@@ -191,7 +191,7 @@ def is_date_workday(date: datetime) -> bool:
     is_date_a_vacation = vacation_checker.is_workday(date)
     is_date_a_weekend = weekend_checker.is_workday(date)
 
-    is_workday = not (
+    is_workday = (
         is_date_a_holiday or
         is_date_a_vacation or
         is_date_a_weekend
