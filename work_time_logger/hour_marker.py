@@ -27,6 +27,7 @@ class ExitCode(Enum):
     IN_DATE_ERROR = 2
     OUT_DATE_ERROR = 3
     LOGOUT_TIMEOUT = 4
+    ALREADY_MARKED = 5
 
 
 def mark_working_hours(date: datetime):

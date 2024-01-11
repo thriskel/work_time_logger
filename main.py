@@ -9,7 +9,8 @@
 
 from datetime import datetime, timedelta
 from log_manager.logs import LogManager
-from work_time_logger.hour_marker import ExitCode, mark_working_hours
+from work_time_logger.hour_marker import ExitCode # , mark_working_hours
+from work_time_logger.woffus_marker import press_cheker_button
 from work_time_logger.workday_checker import is_date_workday
 
 
@@ -27,15 +28,13 @@ def main():
         return
 
     # Mark the working hours
-    exit_code = mark_working_hours(date)
+    exit_code = press_cheker_button()
 
     # log result
     if exit_code == ExitCode.SUCCESS:
-        logger.info("Hours marked successfully.")
+        logger.info("Entrance/exit button pressed successfully.")
     else:
-        logger.error("Hours could not be marked.")
-
-    return
+        logger.error("Could not press the entrance/exit button.")
 
 
 if __name__ == "__main__":
